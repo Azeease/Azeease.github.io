@@ -101,7 +101,7 @@
   .kicker .live { width:6px; height:6px; border-radius:50%; background:var(--sage);
     box-shadow:0 0 8px var(--sage); animation:pulse 2.4s ease-in-out infinite; }
 
-  .head-grid { display:grid; grid-template-columns:1fr auto; gap:clamp(24px,5vw,60px); align-items:center; }
+  .head-grid { display:grid; grid-template-columns:1fr auto; gap:clamp(24px,5vw,60px); align-items:start; }
   h1.name { font-weight:700; font-size:clamp(3rem,10vw,6.6rem); line-height:.92; letter-spacing:-.015em; }
   h1.name em { font-style:normal; font-weight:700; color:var(--sage); }
   .role-line { margin-top:1rem; font-size:clamp(.95rem,2.4vw,1.15rem); color:var(--muted);
@@ -133,9 +133,9 @@
   .chip svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:1.6; }
 
   /* domain loop */
-  .domains { display:flex; flex-wrap:wrap; gap:10px; margin-top:1.6rem; }
-  .domain { font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase;
-    color:var(--muted); border:1px dashed var(--line); border-radius:8px; padding:7px 12px; }
+  .domains { display:flex; flex-wrap:wrap; gap:6px; margin-top:1.6rem; }
+  .domain { font-size:.57rem; font-weight:600; letter-spacing:.03em; text-transform:uppercase;
+    color:var(--muted); border:1px dashed var(--line); border-radius:8px; padding:6px 8px; white-space:nowrap; }
   .domain b { color:var(--sage); }
 
   /* ── SECTIONS ── */
@@ -187,7 +187,7 @@
                radial-gradient(ellipse at 75% 60%, rgba(196,168,118,.10), transparent 55%);
     filter:blur(24px); transition:transform .1s linear; }
   .work { display:flex; flex-direction:row; gap:20px; overflow-x:auto; scroll-snap-type:x mandatory;
-    padding:10px 4px 22px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+    padding:10px calc((100% - min(82vw,540px)) / 2) 22px; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
   .work::-webkit-scrollbar { display:none; }
   .work .card { flex:0 0 min(82vw,540px); scroll-snap-align:center; transition:opacity .1s linear; }
   .card { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
@@ -388,9 +388,9 @@
     <a href="#profil" data-label-fr="Profil" data-label-en="Profile" data-label="Profil" aria-label="Profil"></a>
     <a href="#pilote" data-label-fr="Pilote" data-label-en="What I own" data-label="Pilote" aria-label="Ce que je pilote"></a>
     <a href="#operate" data-label-fr="Méthode" data-label-en="Method" data-label="Méthode" aria-label="Comment je pilote"></a>
+    <a href="#xp" data-label-fr="Parcours" data-label-en="Experience" data-label="Parcours" aria-label="Parcours"></a>
     <a href="#work" data-label-fr="Réalisations" data-label-en="Work" data-label="Réalisations" aria-label="Réalisations"></a>
     <a href="#proof" data-label-fr="Preuves" data-label-en="Proof" data-label="Preuves" aria-label="Preuves"></a>
-    <a href="#xp" data-label-fr="Parcours" data-label-en="Experience" data-label="Parcours" aria-label="Parcours"></a>
     <a href="#edu" data-label-fr="Formation" data-label-en="Education" data-label="Formation" aria-label="Formation"></a>
     <a href="#off" data-label-fr="Hors cadre" data-label-en="Off-frame" data-label="Hors cadre" aria-label="Hors cadre"></a>
   </nav>
@@ -526,10 +526,53 @@
       </div>
     </section>
 
-    <!-- 04 REALISATIONS -->
-    <section id="work">
+    <!-- 04 PARCOURS -->
+    <section id="xp">
       <div class="sec-head reveal">
         <span class="sec-num serif">04</span>
+        <span class="sec-title serif" data-en="Experience">Parcours</span>
+        <span class="sec-rule"></span>
+      </div>
+      <div class="xp">
+        <div class="xp-item reveal tilt">
+          <div class="xp-when" data-en="Apr 2026 - present">Avr. 2026 - présent</div>
+          <div>
+            <div class="xp-role serif">Head of Product</div>
+            <div class="xp-org">ProovStation · Lyon</div>
+            <div class="xp-desc" data-en="Tri-domain scope, product management, solution architecture and quality control. Own a multi-domain roadmap (software, Gen3 hardware, AI, integrations, platform) across 13+ countries and 30+ deployments.">Scope tri-domaine, product management, architecture de solution et contrôle qualité. Pilotage d'une roadmap multi-domaines (software, hardware Gen3, IA, intégrations, plateforme) sur 13+ pays et 30+ déploiements.</div>
+          </div>
+        </div>
+        <div class="xp-item reveal tilt">
+          <div class="xp-when" data-en="Aug 2023 - Apr 2026">Août 2023 - Avr. 2026</div>
+          <div>
+            <div class="xp-role serif" data-en="Technical Product Manager">Technical Product Manager</div>
+            <div class="xp-org">ProovStation · Lyon</div>
+            <div class="xp-desc" data-en="Owned discovery-to-delivery on the inspection platform and the AI detection loop; drove the enterprise pilot, partner integration specs and the field-driven model hardening.">Discovery-to-delivery sur la plateforme d'inspection et la boucle de détection IA ; pilotage du pilote grand compte, des specs d'intégration partenaire et du durcissement modèle piloté par le terrain.</div>
+          </div>
+        </div>
+        <div class="xp-item reveal tilt">
+          <div class="xp-when" data-en="Aug 2021 - Aug 2023">Août 2021 - Août 2023</div>
+          <div>
+            <div class="xp-role serif" data-en="Product Owner / AI PM">Product Owner / PM IA</div>
+            <div class="xp-org">ProovStation · Lyon</div>
+            <div class="xp-desc" data-en="Translated field needs into AI product requirements; built the annotation-quality discipline that turned raw captures into measurable detection accuracy.">Traduction des besoins terrain en exigences produit IA ; mise en place de la discipline qualité d'annotation qui a transformé les captations brutes en précision de détection mesurable.</div>
+          </div>
+        </div>
+        <div class="xp-item reveal tilt">
+          <div class="xp-when" data-en="Mar - Aug 2021">Mars - Août 2021</div>
+          <div>
+            <div class="xp-role serif" data-en="Customer Success (internship)">Customer Success (stage)</div>
+            <div class="xp-org">ProovStation · Lyon</div>
+            <div class="xp-desc" data-en="Field-facing role, where I learned the operator's reality that still anchors every product call I make.">Rôle terrain, là où j'ai appris la réalité de l'opérateur qui ancre encore chacune de mes décisions produit.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 REALISATIONS -->
+    <section id="work">
+      <div class="sec-head reveal">
+        <span class="sec-num serif">05</span>
         <span class="sec-title serif" data-en="Selected work">Réalisations</span>
         <span class="sec-rule"></span>
       </div>
@@ -668,10 +711,10 @@
       <div class="work-dots" id="work-dots" role="tablist" aria-label="Sélection de réalisation"></div>
     </section>
 
-    <!-- 05 PREUVES -->
+    <!-- 06 PREUVES -->
     <section id="proof">
       <div class="sec-head reveal">
-        <span class="sec-num serif">05</span>
+        <span class="sec-num serif">06</span>
         <span class="sec-title serif" data-en="Proof">Preuves</span>
         <span class="sec-rule"></span>
       </div>
@@ -686,49 +729,6 @@
         <a class="acct" href="https://www.stellantis.com" target="_blank" rel="noopener">Stellantis</a><a class="acct" href="https://www.amazon.com" target="_blank" rel="noopener">Amazon</a><a class="acct" href="https://www.google.com/search?q=BCA+Europe+vehicle+remarketing" target="_blank" rel="noopener">BCA Europe</a><a class="acct" href="https://www.sixt.com" target="_blank" rel="noopener">SIXT</a><a class="acct" href="https://www.hertz.com" target="_blank" rel="noopener">Hertz</a><a class="acct" href="https://www.europcar.com" target="_blank" rel="noopener">Europcar</a><a class="acct" href="https://www.michelin.com" target="_blank" rel="noopener">Michelin</a><a class="acct" href="https://www.arval.com" target="_blank" rel="noopener">Arval</a><a class="acct" href="https://www.google.com/search?q=Autobiz+vehicle+valuation" target="_blank" rel="noopener">Autobiz</a>
       </div>
       <p class="note reveal" data-en="Pilot figures above come from a two-site programme for a major European automotive account; presented anonymised, exact numbers available on request under NDA.">Les chiffres du pilote ci-dessus proviennent d'un programme deux sites pour un grand compte automobile européen ; présentés anonymisés, chiffres exacts disponibles sur demande sous NDA.</p>
-    </section>
-
-    <!-- 06 PARCOURS -->
-    <section id="xp">
-      <div class="sec-head reveal">
-        <span class="sec-num serif">06</span>
-        <span class="sec-title serif" data-en="Experience">Parcours</span>
-        <span class="sec-rule"></span>
-      </div>
-      <div class="xp">
-        <div class="xp-item reveal tilt">
-          <div class="xp-when" data-en="Apr 2026 - present">Avr. 2026 - présent</div>
-          <div>
-            <div class="xp-role serif">Head of Product</div>
-            <div class="xp-org">ProovStation · Lyon</div>
-            <div class="xp-desc" data-en="Tri-domain scope, product management, solution architecture and quality control. Own a multi-domain roadmap (software, Gen3 hardware, AI, integrations, platform) across 13+ countries and 30+ deployments.">Scope tri-domaine, product management, architecture de solution et contrôle qualité. Pilotage d'une roadmap multi-domaines (software, hardware Gen3, IA, intégrations, plateforme) sur 13+ pays et 30+ déploiements.</div>
-          </div>
-        </div>
-        <div class="xp-item reveal tilt">
-          <div class="xp-when" data-en="Aug 2023 - Apr 2026">Août 2023 - Avr. 2026</div>
-          <div>
-            <div class="xp-role serif" data-en="Technical Product Manager">Technical Product Manager</div>
-            <div class="xp-org">ProovStation · Lyon</div>
-            <div class="xp-desc" data-en="Owned discovery-to-delivery on the inspection platform and the AI detection loop; drove the enterprise pilot, partner integration specs and the field-driven model hardening.">Discovery-to-delivery sur la plateforme d'inspection et la boucle de détection IA ; pilotage du pilote grand compte, des specs d'intégration partenaire et du durcissement modèle piloté par le terrain.</div>
-          </div>
-        </div>
-        <div class="xp-item reveal tilt">
-          <div class="xp-when" data-en="Aug 2021 - Aug 2023">Août 2021 - Août 2023</div>
-          <div>
-            <div class="xp-role serif" data-en="Product Owner / AI PM">Product Owner / PM IA</div>
-            <div class="xp-org">ProovStation · Lyon</div>
-            <div class="xp-desc" data-en="Translated field needs into AI product requirements; built the annotation-quality discipline that turned raw captures into measurable detection accuracy.">Traduction des besoins terrain en exigences produit IA ; mise en place de la discipline qualité d'annotation qui a transformé les captations brutes en précision de détection mesurable.</div>
-          </div>
-        </div>
-        <div class="xp-item reveal tilt">
-          <div class="xp-when" data-en="Mar - Aug 2021">Mars - Août 2021</div>
-          <div>
-            <div class="xp-role serif" data-en="Customer Success (internship)">Customer Success (stage)</div>
-            <div class="xp-org">ProovStation · Lyon</div>
-            <div class="xp-desc" data-en="Field-facing role, where I learned the operator's reality that still anchors every product call I make.">Rôle terrain, là où j'ai appris la réalité de l'opérateur qui ancre encore chacune de mes décisions produit.</div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <!-- 07 FORMATION -->
