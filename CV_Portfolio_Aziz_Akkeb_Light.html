@@ -101,7 +101,7 @@
   .kicker .live { width:6px; height:6px; border-radius:50%; background:var(--sage);
     box-shadow:0 0 8px var(--sage); animation:pulse 2.4s ease-in-out infinite; }
 
-  .head-grid { display:grid; grid-template-columns:1fr auto; gap:clamp(24px,5vw,60px); align-items:start; }
+  .head-grid { display:grid; grid-template-columns:1fr auto; gap:clamp(24px,5vw,60px); align-items:center; }
   h1.name { font-weight:700; font-size:clamp(3rem,10vw,6.6rem); line-height:.92; letter-spacing:-.015em; }
   h1.name em { font-style:normal; font-weight:700; color:var(--sage); }
   .role-line { margin-top:1rem; font-size:clamp(.95rem,2.4vw,1.15rem); color:var(--muted);
@@ -163,7 +163,7 @@
 
   /* how I operate */
   .flow { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-bottom:2.2rem; }
-  .flow-step { position:relative; padding:20px 16px 20px 0; }
+  .flow-step { position:relative; padding:20px 16px 20px 22px; }
   .flow-step .n { font-size:.66rem; letter-spacing:.2em; text-transform:uppercase; color:var(--amber); }
   .flow-step h4 { font-family:'Cormorant Garamond',serif; font-size:1.35rem; margin:.3rem 0 .4rem; font-weight:600; }
   .flow-step p { font-size:.84rem; color:var(--muted); }
@@ -200,11 +200,32 @@
   .work-arrow:hover { border-color:var(--sage); color:var(--sage); transform:translateY(-50%) scale(1.12); }
   .work-arrow svg { width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:2; }
   .work-arrow.prev { left:-10px; } .work-arrow.next { right:-10px; }
+  .card-toggle { display:none; }
+  .card-hook { display:none; }
   @media (max-width:760px) {
     .work-arrow { display:none; }
     .carousel-hint, .work-dots, .work-nebula { display:none; }
     .work { flex-direction:column; overflow-x:visible; scroll-snap-type:none; padding:0; }
     .work .card { flex:none; width:100%; transform:none !important; opacity:1 !important; }
+
+    /* réalisations en accordéon sur mobile */
+    .card { cursor:pointer; transition:border-color .3s, box-shadow .3s; }
+    .card-top { cursor:pointer; margin-bottom:0; -webkit-tap-highlight-color:transparent; }
+    .card-top:active { transform:scale(.985); }
+    .card-hook { display:block; font-size:.86rem; color:var(--sage); font-weight:500;
+      margin-top:.35rem; padding-right:40px; }
+    .card-toggle { display:flex; align-items:center; justify-content:center; width:30px; height:30px;
+      border-radius:50%; border:1px solid var(--line);
+      background:color-mix(in srgb, var(--sage) 10%, transparent);
+      color:var(--sage); flex-shrink:0; margin-left:auto;
+      transition:transform .4s cubic-bezier(.4,0,.2,1), background .3s, border-color .3s; }
+    .card-toggle svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2.2; }
+    .card.open .card-toggle { transform:rotate(180deg); background:var(--sage); color:var(--void); }
+    html.light .card.open .card-toggle { color:#F5F0E8; }
+    .card:not(.open):hover, .card:not(.open):active { border-color:var(--sage);
+      box-shadow:0 0 0 1px rgba(122,175,138,.25), 0 8px 24px rgba(122,175,138,.12); }
+    .card-body { max-height:0; overflow:hidden; transition:max-height .45s cubic-bezier(.4,0,.2,1); }
+    .card-body dl.par { margin-top:1.1rem; }
   }
   .work-dots { display:flex; gap:8px; justify-content:center; margin-top:.6rem; }
   .work-dots button { width:7px; height:7px; border-radius:50%; border:1px solid var(--line); background:var(--line);
@@ -593,7 +614,10 @@
             <span class="idx serif">A</span>
             <h3 class="serif" data-en="AI detection that beats the human expert">Une détection IA qui dépasse l'expert humain</h3>
             <span class="badge">Product × Quality</span>
+            <span class="card-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
           </div>
+          <p class="card-hook" data-en="82% accuracy, what the human eye misses">82% de précision, ce que l'œil humain ne voit plus</p>
+          <div class="card-body">
           <dl class="par">
             <dt data-en="Problem">Problème</dt>
             <dd data-en="On a two-site pilot for a major European automotive account, manual damage inspection was slow, subjective and inconsistent between operators, the core risk to trust in an automated inspection.">Sur un pilote deux sites pour un grand compte automobile européen, l'inspection manuelle des dommages était lente, subjective et incohérente entre opérateurs, le risque central pour la confiance dans une inspection automatisée.</dd>
@@ -605,6 +629,7 @@
           <div class="products">
             <span class="prod" data-en="Computer vision">Vision par ordinateur</span><span class="prod" data-en="Ground-truth annotation">Annotation vérité terrain</span><span class="prod" data-en="Model hardening">Durcissement modèle</span><span class="prod" data-en="Detection accuracy">Précision de détection</span>
           </div>
+          </div>
         </article>
 
         <!-- Card 2 -->
@@ -613,7 +638,10 @@
             <span class="idx serif">B</span>
             <h3 class="serif" data-en="Inspection turnaround, 7× faster">Un délai d'inspection 7 fois plus rapide</h3>
             <span class="badge alt">Delivery</span>
+            <span class="card-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
           </div>
+          <p class="card-hook" data-en="Same rigor, 7× the speed">Le même contrôle, 7 fois plus vite</p>
+          <div class="card-body">
           <dl class="par">
             <dt data-en="Problem">Problème</dt>
             <dd data-en="The account needed a contractual latency guarantee: results had to be usable fast enough to act on, at scale, without breaking the SLA.">Le compte exigeait une garantie contractuelle de latence : des résultats exploitables assez vite pour agir, à l'échelle, sans casser le SLA.</dd>
@@ -625,6 +653,7 @@
           <div class="products">
             <span class="prod" data-en="Inspection pipeline">Pipeline d'inspection</span><span class="prod" data-en="SLA compliance">Respect du SLA</span><span class="prod" data-en="Latency instrumentation">Instrumentation de la latence</span>
           </div>
+          </div>
         </article>
 
         <!-- Card 3 -->
@@ -633,7 +662,10 @@
             <span class="idx serif">C</span>
             <h3 class="serif" data-en="A customer-facing feature built for fleets you can't predict">Une fonctionnalité client-facing pensée pour des flottes imprévisibles</h3>
             <span class="badge">Product</span>
+            <span class="card-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
           </div>
+          <p class="card-hook" data-en="No fleet left behind, no invoice missed">Zéro flotte oubliée, zéro facture ratée</p>
+          <div class="card-body">
           <dl class="par">
             <dt data-en="Problem">Problème</dt>
             <dd data-en="Fleets that can't be enumerated in advance (used-vehicle flows) kept getting mis-routed and mis-billed, declared fleets and catch-all traffic collided.">Les flottes non énumérables à l'avance (flux VO) étaient mal routées et mal facturées, flottes déclarées et trafic « catch-all » se percutaient.</dd>
@@ -645,6 +677,7 @@
           <div class="products">
             <span class="prod" data-en="Customer-facing rollout">Déploiement client-facing</span><span class="prod" data-en="In-flow data correction">Correction de donnée en flux</span><span class="prod" data-en="Routing architecture">Architecture de routing</span>
           </div>
+          </div>
         </article>
 
         <!-- Card 4 -->
@@ -653,7 +686,10 @@
             <span class="idx serif">D</span>
             <h3 class="serif" data-en="Partner integrations, without giving away the core">Intégrations partenaires, sans céder le cœur</h3>
             <span class="badge alt">Solution Architecture</span>
+            <span class="card-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
           </div>
+          <p class="card-hook" data-en="Partners plugged in, the core kept ours">Des partenaires connectés, le cœur du produit protégé</p>
+          <div class="card-body">
           <dl class="par">
             <dt data-en="Problem">Problème</dt>
             <dd data-en="Enterprise accounts and integrators wanted the inspection plugged into their systems, a recurring temptation to hand over data or detection to a third party.">Grands comptes et intégrateurs voulaient brancher l'inspection dans leurs systèmes, tentation récurrente de céder la donnée ou la détection à un tiers.</dd>
@@ -665,6 +701,7 @@
           <div class="products">
             <span class="prod" data-en="Public API &amp; keys">API publique &amp; clés</span><span class="prod">Webhooks</span><span class="prod" data-en="Dealer-system connectors">Connecteurs systèmes concessionnaires</span><span class="prod" data-en="Digital log-book API">API carnet numérique</span>
           </div>
+          </div>
         </article>
 
         <!-- Card 5 -->
@@ -673,7 +710,10 @@
             <span class="idx serif">E</span>
             <h3 class="serif" data-en="Turning the product into a sales engine">Faire du produit une machine à vendre</h3>
             <span class="badge">Product × SA</span>
+            <span class="card-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
           </div>
+          <p class="card-hook" data-en="ROI made visible, not just told">Le ROI enfin visible, pas juste raconté</p>
+          <div class="card-body">
           <dl class="par">
             <dt data-en="Problem">Problème</dt>
             <dd data-en="Sales couldn't demo reliably, RFPs needed tailored artefacts, and the business had no clean way to show the value it was actually generating.">Le commerce ne pouvait pas démontrer de façon fiable, les RFP exigeaient des livrables sur mesure, et le business n'avait pas de moyen propre de montrer la valeur réellement générée.</dd>
@@ -685,6 +725,7 @@
           <div class="products">
             <span class="prod" data-en="Demo / Sandbox">Démo / Sandbox</span><span class="prod" data-en="End-of-lease report">Rapport fin de leasing</span><span class="prod" data-en="ROI &amp; KPI tracking">Suivi ROI &amp; KPI</span>
           </div>
+          </div>
         </article>
 
         <!-- Card 6 -->
@@ -693,7 +734,10 @@
             <span class="idx serif">F</span>
             <h3 class="serif" data-en="Operationalising AI inside the company">Opérationnaliser l'IA dans l'entreprise</h3>
             <span class="badge alt" data-en="Scale &amp; tooling">Scale &amp; tooling</span>
+            <span class="card-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
           </div>
+          <p class="card-hook" data-en="AI doing the grunt work, for real">L'IA qui fait le sale boulot, pour de vrai</p>
+          <div class="card-body">
           <dl class="par">
             <dt data-en="Problem">Problème</dt>
             <dd data-en="Internal teams spent hours on support triage and on pulling product data by hand, time not spent on strategy.">Les équipes internes passaient des heures sur le tri du support et la récupération manuelle de données produit, du temps pris sur la stratégie.</dd>
@@ -704,6 +748,7 @@
           </dl>
           <div class="products">
             <span class="prod" data-en="Agentic support assistant">Assistant support agentique</span><span class="prod" data-en="Self-service data hub">Data hub self-service</span><span class="prod" data-en="Automation">Automatisation</span>
+          </div>
           </div>
         </article>
         </div>
@@ -1078,6 +1123,47 @@
       }
       if (prevBtn) prevBtn.addEventListener('click', function () { step(-1); });
       if (nextBtn) nextBtn.addEventListener('click', function () { step(1); });
+    })();
+
+    // ---- réalisations: accordéon sur mobile ----
+    (function initCardAccordion() {
+      if (!window.matchMedia('(max-width:760px)').matches) return;
+      document.querySelectorAll('#work-track .card').forEach(function (card) {
+        var top = card.querySelector('.card-top');
+        var body = card.querySelector('.card-body');
+        if (!top || !body) return;
+        top.setAttribute('role', 'button');
+        top.setAttribute('tabindex', '0');
+        top.setAttribute('aria-expanded', 'false');
+
+        function toggle() {
+          var isOpen = card.classList.contains('open');
+          if (isOpen) {
+            body.style.maxHeight = '0px';
+            card.classList.remove('open');
+            top.setAttribute('aria-expanded', 'false');
+          } else {
+            document.querySelectorAll('#work-track .card.open').forEach(function (openCard) {
+              if (openCard !== card) {
+                openCard.classList.remove('open');
+                openCard.querySelector('.card-body').style.maxHeight = '0px';
+                var otherTop = openCard.querySelector('.card-top');
+                if (otherTop) otherTop.setAttribute('aria-expanded', 'false');
+              }
+            });
+            card.classList.add('open');
+            body.style.maxHeight = body.scrollHeight + 'px';
+            top.setAttribute('aria-expanded', 'true');
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          tick();
+          top.classList.remove('pop'); void top.offsetWidth; top.classList.add('pop');
+        }
+        top.addEventListener('click', toggle);
+        top.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+        });
+      });
     })();
   })();
 </script>
