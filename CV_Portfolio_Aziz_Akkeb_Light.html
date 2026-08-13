@@ -7,16 +7,16 @@
 <meta name="theme-color" content="#0E100B">
 <title>Aziz Akkeb · Head of Product</title>
 
-<meta name="description" content="Head of Product B2B, je transforme des besoins business complexes en produits techniques qui tiennent sur le terrain : discovery, qualité de détection, intégration partenaire.">
+<meta name="description" content="Head of Product B2B, je transforme des besoins business complexes en produits techniques qui tiennent sur le terrain : discovery, qualité produit, intégration partenaire.">
 <meta property="og:title" content="Aziz Akkeb · Head of Product">
-<meta property="og:description" content="Je transforme des besoins business complexes en produits techniques qui tiennent sur le terrain, de la discovery à la qualité de détection jusqu'à l'intégration partenaire.">
+<meta property="og:description" content="Je transforme des besoins business complexes en produits techniques qui tiennent sur le terrain, de la discovery à la qualité produit jusqu'à l'intégration partenaire.">
 <meta property="og:type" content="profile">
 <meta property="og:image" content="og-cover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Aziz Akkeb · Head of Product">
-<meta name="twitter:description" content="I turn complex business needs into technical products that hold up in the field: discovery, detection quality, partner integration.">
+<meta name="twitter:description" content="I turn complex business needs into technical products that hold up in the field: discovery, product quality, partner integration.">
 <meta name="twitter:image" content="og-cover.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -151,7 +151,7 @@
   .muted { color:var(--muted); }
 
   /* pillars */
-  .pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .pillars { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
   .pillar { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
     padding:26px 24px; position:relative; overflow:hidden; transition:border-color .4s, transform .4s; }
   .pillar:hover { border-color:var(--sage); transform:translateY(-3px); }
@@ -288,6 +288,13 @@
   .bar { height:4px; border-radius:2px; background:var(--line); overflow:hidden; }
   .bar i { display:block; height:100%; background:linear-gradient(90deg,var(--sage),var(--amber)); }
   .skills { display:flex; flex-wrap:wrap; gap:8px; }
+  .tools { display:flex; flex-wrap:wrap; gap:8px; margin-top:1rem; }
+  .tool { display:inline-flex; align-items:center; gap:6px; font-size:.76rem; font-weight:500; color:var(--ivory);
+    text-decoration:none; border:1px solid var(--line); border-radius:6px; padding:6px 11px 6px 8px;
+    background:var(--panel); transition:transform .18s cubic-bezier(.3,.8,.3,1), border-color .25s, color .25s, box-shadow .25s; }
+  .tool:hover { border-color:var(--sage); color:var(--sage); transform:translateY(-2px); box-shadow:0 4px 14px rgba(122,175,138,.18); }
+  .tool svg { width:16px; height:16px; stroke:var(--amber); fill:none; stroke-width:1.7; flex-shrink:0; }
+  .tool:hover svg { stroke:var(--sage); }
   .skill { font-size:.76rem; color:var(--ivory); border:1px solid var(--line); border-radius:6px;
     padding:6px 11px; background:var(--panel); text-decoration:none; display:inline-block;
     transition:transform .18s cubic-bezier(.3,.8,.3,1), border-color .25s, color .25s, box-shadow .25s; }
@@ -330,6 +337,30 @@
     align-items:center; justify-content:center; padding:24px; cursor:zoom-out; }
   .modal.open { display:flex; }
   .modal img { max-width:92vw; max-height:88vh; border-radius:var(--radius); border:1px solid var(--line); }
+
+  .card-expand { display:inline-flex; align-items:center; gap:7px; margin-top:1.3rem; background:none; border:0;
+    padding:0; font-size:.78rem; font-weight:600; letter-spacing:.04em; color:var(--sage); cursor:pointer;
+    text-transform:uppercase; transition:gap .25s, color .25s; }
+  .card-expand svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; transition:transform .25s; }
+  .card-expand:hover { gap:11px; }
+  .card-expand:hover svg { transform:translate(2px,-2px); }
+
+  .card-modal { cursor:auto; align-items:center; padding:24px; }
+  .card-modal-inner { position:relative; width:100%; max-width:700px; max-height:85vh; overflow-y:auto;
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:clamp(28px,5vw,48px); box-shadow:0 24px 80px rgba(0,0,0,.5); }
+  html.js .card-modal-inner { transform:scale(.94) translateY(10px); opacity:0; transition:transform .3s cubic-bezier(.3,.8,.3,1), opacity .3s; }
+  .card-modal.open .card-modal-inner { transform:none; opacity:1; }
+  .card-modal-close { position:absolute; top:16px; right:16px; width:34px; height:34px; border-radius:50%;
+    border:1px solid var(--line); background:var(--void); color:var(--ivory); font-size:1.1rem; line-height:1;
+    cursor:pointer; transition:border-color .25s, color .25s; }
+  .card-modal-close:hover { border-color:var(--sage); color:var(--sage); }
+  .card-modal-body .card-top { cursor:auto; }
+  .card-modal-body .card-toggle, .card-modal-body .card-hook, .card-modal-body .card-expand { display:none !important; }
+  .card-modal-body .card-body { max-height:none !important; overflow:visible !important; }
+  .card-modal-body::before { content:attr(data-idx); display:block; font-family:'Cormorant Garamond',serif;
+    font-size:1rem; color:var(--amber); font-weight:600; margin-bottom:.3rem; }
+  @media (max-width:520px) { .card-modal { padding:12px; } .card-modal-inner { max-height:90vh; } }
 
   /* reveal on scroll */
   .reveal { opacity:1; transform:none; }
@@ -436,12 +467,12 @@
       <div class="head-grid">
         <div>
           <h1 class="name serif">Aziz <em>Akkeb</em></h1>
-          <p class="role-line" data-en="Product · Solution Architecture · Quality · B2B AI, SaaS &amp; hardware">Produit · Architecture de solution · Qualité · IA B2B, SaaS &amp; hardware</p>
-          <p class="northstar" data-en-html="I turn <b>complex business needs into technical products that hold up in the field</b>, owning the full loop, from discovery to detection quality to partner integration.">Je transforme des <b>besoins business complexes en produits techniques qui tiennent sur le terrain</b>, en possédant toute la boucle : de la discovery à la qualité de détection jusqu'à l'intégration partenaire.</p>
+          <p class="role-line" data-en="Product Management · Solutions Architecture · Quality · B2B AI, SaaS &amp; hardware">Product Management · Architectures de solutions · Qualité · IA B2B, SaaS &amp; hardware</p>
+          <p class="northstar" data-en-html="I turn <b>complex business needs into technical products that hold up in the field</b>, from discovery to product quality to partner integration.">Je transforme des <b>besoins business complexes en produits techniques qui tiennent sur le terrain</b>, de la discovery à la qualité produit jusqu'à l'intégration partenaire.</p>
 
           <div class="domains">
-            <span class="domain" data-en-html="<b>Product</b> · strategy &amp; delivery">Produit · <b>stratégie &amp; delivery</b></span>
-            <span class="domain" data-en-html="<b>Solution Architecture</b> · enterprise integrations">Archi. solution · <b>intégrations grands comptes</b></span>
+            <span class="domain" data-en-html="<b>Product Management</b> · strategy &amp; delivery">Product Management · <b>stratégie &amp; delivery</b></span>
+            <span class="domain" data-en-html="<b>Solutions Architecture</b> · enterprise integrations">Archi. solutions · <b>intégrations grands comptes</b></span>
             <span class="domain" data-en-html="<b>Quality</b> · data that feeds the AI">Qualité · <b>la donnée qui nourrit l'IA</b></span>
           </div>
 
@@ -474,8 +505,8 @@
         <span class="sec-title serif" data-en="Profile">Profil</span>
         <span class="sec-rule"></span>
       </div>
-      <p class="lede reveal" data-en-html="Head of Product in a B2B scale-up that inspects vehicles with AI, SaaS and hardware, deployed across 13+ countries. In four years I grew from field CSM to product owner to a role spanning three disciplines: product management, solution architecture for enterprise accounts, and quality control of the data that trains our models.">Head of Product dans une scale-up B2B qui inspecte les véhicules par l'IA, SaaS et hardware, déployés dans 13+ pays. En quatre ans, je suis passé de CSM terrain à product owner puis à un rôle qui couvre trois disciplines : le product management, l'architecture de solution pour les grands comptes, et le contrôle qualité de la donnée qui entraîne nos modèles.</p>
-      <p class="lede reveal muted" data-en-html="That combination is the point. Most product leaders own strategy <em>or</em> data <em>or</em> integration. Owning all three lets me close the loop between what the field needs, what the models can detect, and what makes an enterprise sign, which is exactly where B2B AI products succeed or stall.">C'est cette combinaison qui compte. La plupart des product leaders possèdent la stratégie <em>ou</em> la donnée <em>ou</em> l'intégration. Les posséder toutes les trois me permet de fermer la boucle entre ce que le terrain exige, ce que les modèles savent détecter, et ce qui fait signer un grand compte, précisément là où les produits d'IA B2B réussissent ou calent.</p>
+      <p class="lede reveal" data-en-html="Head of Product in a B2B scale-up that inspects vehicles with AI, SaaS and hardware, deployed across 22+ countries. In four years I grew from field CSM to tech product manager to a role spanning three disciplines: product management, solutions architecture for enterprise accounts, and quality control of the data that trains our models.">Head of Product dans une scale-up B2B qui inspecte les véhicules par l'IA, SaaS et hardware, déployés dans plus de 22 pays. En quatre ans, je suis passé de CSM terrain à tech product manager puis à un rôle qui couvre trois disciplines : le product management, l'architecture de solutions pour les grands comptes, et le contrôle qualité de la donnée qui entraîne nos modèles.</p>
+      <p class="lede reveal muted" data-en-html="That combination is the point. Most product leaders own strategy <em>or</em> data <em>or</em> integration. Owning all three lets me close the loop between what the field needs, what the models can generate, and what makes an enterprise sign, which is exactly where B2B AI products succeed or fail.">C'est cette combinaison qui compte. La plupart des product leaders possèdent la stratégie <em>ou</em> la donnée <em>ou</em> l'intégration. Les posséder toutes les trois me permet de fermer la boucle entre ce que le terrain exige, ce que les modèles savent générer, et ce qui fait signer un grand compte, précisément là où les produits d'IA B2B réussissent ou échouent.</p>
     </section>
 
     <!-- 02 CE QUE JE PILOTE -->
@@ -489,20 +520,26 @@
         <div class="pillar reveal">
           <span class="tag">01</span>
           <svg class="pillar-ic" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"></path></svg>
-          <h3 class="serif" data-en="Product Management">Product Management</h3>
-          <p data-en="Roadmap, OKRs, discovery and delivery across a multi-domain portfolio: software, Gen3 hardware, AI, integrations and platform.">Roadmap, OKRs, discovery et delivery sur un portefeuille multi-domaines : software, hardware Gen3, IA, intégrations et plateforme.</p>
+          <h3 class="serif" data-en="Product Management Agile">Product Management Agile</h3>
+          <p data-en="Roadmap, OKRs, discovery and delivery across a multi-domain portfolio: software, hardware, AI, integrations and Cloud.">Roadmap, OKRs, discovery et delivery sur un portefeuille multi-domaines : software, hardware, IA, intégrations et Cloud.</p>
         </div>
         <div class="pillar reveal">
           <span class="tag">02</span>
           <svg class="pillar-ic" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><path d="M17.5 14v7M14 17.5h7"></path></svg>
-          <h3 class="serif" data-en="Solution Architecture">Architecture de solution</h3>
+          <h3 class="serif" data-en="Solutions Architecture">Architectures de solutions</h3>
           <p data-en="Pre-sales technical answers, partner integration specs and scoping, the layer that turns a product into a signed enterprise deal.">Réponses techniques d'avant-vente, specs d'intégration partenaire et cadrage, la couche qui transforme un produit en contrat grand compte signé.</p>
         </div>
         <div class="pillar reveal">
           <span class="tag">03</span>
           <svg class="pillar-ic" viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-4 8-8 9-4-1-8-4-8-9V7z"></path><path d="M9 12l2 2 4-4"></path></svg>
           <h3 class="serif" data-en="Quality Control">Quality Control</h3>
-          <p data-en="I run the annotation quality operation that feeds the detection models, the ground-truth loop that turns field data into measurable accuracy.">Je supervise l'opération d'annotation qui nourrit les modèles de détection, la boucle de vérité terrain qui transforme la donnée en précision mesurable.</p>
+          <p data-en="I run the operation that feeds the detection models, the ground-truth loop that turns field data into measurable accuracy.">Je supervise l'opération qui nourrit les modèles de détection, la boucle de vérité terrain qui transforme la donnée en précision mesurable.</p>
+        </div>
+        <div class="pillar reveal">
+          <span class="tag">04</span>
+          <svg class="pillar-ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"></circle><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"></path><circle cx="18" cy="8" r="2.3"></circle><path d="M15.5 14.3c2.4.4 4.5 2.5 4.5 5.7"></path></svg>
+          <h3 class="serif" data-en="Leading the teams behind the product">Diriger les équipes derrière le produit</h3>
+          <p data-en="I run a product team (4 engineers and a product owner) and lead a 20-person quality-control operation day to day. I treat quality control as a product in its own right, and the team behind it as a real production line, not just headcount to oversee.">Je pilote une équipe produit (4 développeurs et un product owner) et je dirige au quotidien une ligne de contrôle qualité de 20 agents. Je traite le contrôle qualité comme un produit à part entière, et l'équipe qui le fait tourner comme une vraie ligne de production, pas juste une ressource à superviser.</p>
         </div>
       </div>
     </section>
@@ -528,7 +565,7 @@
         <div class="flow-step">
           <span class="n" data-en="03 · Delivery">03 · Delivery</span>
           <h4 class="serif" data-en="Zero ambiguity">Zéro ambiguïté</h4>
-          <p data-en="Spec-first, grep the domain before writing a ticket. Acceptance criteria and out-of-scope written so engineering never has to guess.">Spec-first, je lis le domaine avant d'écrire un ticket. Critères d'acceptation et hors-périmètre écrits pour que l'équipe n'ait jamais à deviner.</p>
+          <p data-en="Spec-first, grep the domain before developing. Acceptance criteria and out-of-scope written so engineering never has to guess.">Spec-first, je lis le domaine avant de cadrer un développement. Critères d'acceptation et hors-périmètre écrits pour que l'équipe n'ait jamais à deviner.</p>
         </div>
         <div class="flow-step">
           <span class="n" data-en="04 · Measure">04 · Mesure</span>
@@ -560,7 +597,7 @@
           <div>
             <div class="xp-role serif">Head of Product</div>
             <div class="xp-org">ProovStation · Lyon</div>
-            <div class="xp-desc" data-en="Tri-domain scope, product management, solution architecture and quality control. Own a multi-domain roadmap (software, Gen3 hardware, AI, integrations, platform) across 13+ countries and 30+ deployments.">Scope tri-domaine, product management, architecture de solution et contrôle qualité. Pilotage d'une roadmap multi-domaines (software, hardware Gen3, IA, intégrations, plateforme) sur 13+ pays et 30+ déploiements.</div>
+            <div class="xp-desc" data-en="Tri-domain scope, product management, solutions architecture and quality control. Own a multi-domain roadmap (software, hardware, AI, integrations, Cloud) across 22+ countries and 77+ deployments.">Scope tri-domaine, product management, architecture de solutions et contrôle qualité. Pilotage d'une roadmap multi-domaines (software, hardware, IA, intégrations, Cloud) sur 22+ pays et 77+ déploiements.</div>
           </div>
         </div>
         <div class="xp-item reveal tilt">
@@ -624,11 +661,12 @@
             <dt data-en="Action">Action</dt>
             <dd data-en-html="I ran the ground-truth quality loop feeding the models: structured annotation, a raised audit rate (to 20% of volume), and a field-driven hardening cycle on the hardest damage and tyre-reading fields, in partnership with a global tyre maker.">J'ai piloté la boucle de vérité terrain qui nourrit les modèles : annotation structurée, taux d'audit relevé (à 20% du volume) et cycle de durcissement piloté par le terrain sur les champs de dommage et de lecture pneu les plus durs, en partenariat avec un pneumaticien mondial.</dd>
             <dt data-en="Result">Résultat</dt>
-            <dd class="result" data-en-html="AI detected <span class='kpi'>82% of all damages vs 58% for the human expert (+24 pts)</span>, and <span class='kpi'>93% vs 85%</span> on major damage. Body-damage accuracy hardened from <span class='kpi'>90% → 99.8%</span>, tyre-model reading from <span class='kpi'>77% → 99.9%</span>. <span class='kpi'>14/14</span> performance KPIs held ≥95% in steady state across <span class='kpi'>6,000+</span> vehicles and <span class='kpi'>40,000+</span> damages.">L'IA a détecté <span class="kpi">82% des dommages vs 58% pour l'expert humain (+24 pts)</span>, et <span class="kpi">93% vs 85%</span> sur le dommage majeur. La précision carrosserie est passée de <span class="kpi">90% → 99,8%</span>, la lecture du modèle de pneu de <span class="kpi">77% → 99,9%</span>. <span class="kpi">14/14</span> KPIs de performance ≥95% en régime stable, sur <span class="kpi">6 000+</span> véhicules et <span class="kpi">40 000+</span> dommages.</dd>
+            <dd class="result" data-en-html="AI detected <span class='kpi'>82% of all damages vs 58% for the human expert (+24 pts)</span>, and <span class='kpi'>93% vs 71%</span> on major damage. Body-damage accuracy hardened from <span class='kpi'>90% → 99.8%</span>, tyre-model reading from <span class='kpi'>77% → 99.9%</span>. <span class='kpi'>14/14</span> performance KPIs held ≥95% in steady state across <span class='kpi'>6,000+</span> vehicles and <span class='kpi'>40,000+</span> damages.">L'IA a détecté <span class="kpi">82% des dommages vs 58% pour l'expert humain (+24 pts)</span>, et <span class="kpi">93% vs 71%</span> sur le dommage majeur. La précision carrosserie est passée de <span class="kpi">90% → 99,8%</span>, la lecture du modèle de pneu de <span class="kpi">77% → 99,9%</span>. <span class="kpi">14/14</span> KPIs de performance ≥95% en régime stable, sur <span class="kpi">6 000+</span> véhicules et <span class="kpi">40 000+</span> dommages.</dd>
           </dl>
           <div class="products">
             <span class="prod" data-en="Computer vision">Vision par ordinateur</span><span class="prod" data-en="Ground-truth annotation">Annotation vérité terrain</span><span class="prod" data-en="Model hardening">Durcissement modèle</span><span class="prod" data-en="Detection accuracy">Précision de détection</span>
           </div>
+          <button class="card-expand" type="button" data-en="See in full →">Voir en grand →</button>
           </div>
         </article>
 
@@ -653,6 +691,7 @@
           <div class="products">
             <span class="prod" data-en="Inspection pipeline">Pipeline d'inspection</span><span class="prod" data-en="SLA compliance">Respect du SLA</span><span class="prod" data-en="Latency instrumentation">Instrumentation de la latence</span>
           </div>
+          <button class="card-expand" type="button" data-en="See in full →">Voir en grand →</button>
           </div>
         </article>
 
@@ -677,6 +716,7 @@
           <div class="products">
             <span class="prod" data-en="Customer-facing rollout">Déploiement client-facing</span><span class="prod" data-en="In-flow data correction">Correction de donnée en flux</span><span class="prod" data-en="Routing architecture">Architecture de routing</span>
           </div>
+          <button class="card-expand" type="button" data-en="See in full →">Voir en grand →</button>
           </div>
         </article>
 
@@ -701,6 +741,7 @@
           <div class="products">
             <span class="prod" data-en="Public API &amp; keys">API publique &amp; clés</span><span class="prod">Webhooks</span><span class="prod" data-en="Dealer-system connectors">Connecteurs systèmes concessionnaires</span><span class="prod" data-en="Digital log-book API">API carnet numérique</span>
           </div>
+          <button class="card-expand" type="button" data-en="See in full →">Voir en grand →</button>
           </div>
         </article>
 
@@ -725,6 +766,7 @@
           <div class="products">
             <span class="prod" data-en="Demo / Sandbox">Démo / Sandbox</span><span class="prod" data-en="End-of-lease report">Rapport fin de leasing</span><span class="prod" data-en="ROI &amp; KPI tracking">Suivi ROI &amp; KPI</span>
           </div>
+          <button class="card-expand" type="button" data-en="See in full →">Voir en grand →</button>
           </div>
         </article>
 
@@ -749,6 +791,82 @@
           <div class="products">
             <span class="prod" data-en="Agentic support assistant">Assistant support agentique</span><span class="prod" data-en="Self-service data hub">Data hub self-service</span><span class="prod" data-en="Automation">Automatisation</span>
           </div>
+          <button class="card-expand" type="button" data-en="See in full →">Voir en grand →</button>
+          </div>
+        </article>
+
+        <!-- Card 7 -->
+        <article class="card reveal" data-idx="G">
+          <div class="card-top">
+            <span class="idx serif">G</span>
+            <h3 class="serif" data-en="TireStation, validated to the millimetre against ground truth">TireStation, validé au millimètre face au terrain</h3>
+            <span class="badge" data-en="Product × Zero-to-One">Product × Zero-to-One</span>
+            <span class="card-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
+          </div>
+          <p class="card-hook" data-en="More precise than the human audit checking it">Plus précis que l'audit humain qui le vérifie</p>
+          <div class="card-body">
+          <dl class="par">
+            <dt data-en="Problem">Problème</dt>
+            <dd data-en="Tyre-wear checks relied on manual human audits, with a meaningful margin of error near the legal threshold, impossible to guarantee at the scale of a multi-thousand-vehicle fleet.">Le contrôle d'usure pneu reposait sur l'audit humain manuel, avec une marge d'erreur significative près du seuil légal, impossible à garantir à l'échelle d'une flotte de plusieurs milliers de véhicules.</dd>
+            <dt data-en="Action">Action</dt>
+            <dd data-en="I drove TireStation's validation against ground truth across 128 paired measurements, then the rollout of a trend-correction layer to cut variance, without adding false positives.">J'ai piloté la validation de TireStation face à la vérité terrain sur 128 mesures appariées, puis le déploiement d'une correction de tendance pour réduire la variance, sans augmenter les faux positifs.</dd>
+            <dt data-en="Result">Résultat</dt>
+            <dd class="result" data-en-html="Corrected measurements hold <span class='kpi'>≤16% error for 95% of cases</span> (~±0.3mm at the 1.5mm regulatory threshold), accuracy on par with the human audit itself, which varies by <span class='kpi'>±0.2mm</span> between two consecutive manual measurements on the same vehicle.">Les mesures corrigées tiennent une <span class="kpi">erreur ≤16% pour 95% des cas</span> (~±0,3mm au seuil réglementaire de 1,5mm), une précision comparable à celle de l'audit humain lui-même, qui varie de <span class="kpi">±0,2mm</span> entre deux mesures manuelles consécutives sur le même véhicule.</dd>
+          </dl>
+          <div class="products">
+            <span class="prod" data-en="Ground-truth validation">Validation terrain</span><span class="prod" data-en="Trend correction">Correction de tendance</span><span class="prod" data-en="Regulatory-grade accuracy">Précision réglementaire</span>
+          </div>
+          <button class="card-expand" type="button" data-en="See in full →">Voir en grand →</button>
+          </div>
+        </article>
+
+        <!-- Card 8 -->
+        <article class="card reveal" data-idx="H">
+          <div class="card-top">
+            <span class="idx serif">H</span>
+            <h3 class="serif" data-en="An 8-minute check, not 2 hours">Un contrôle en 8 minutes, pas 2 heures</h3>
+            <span class="badge alt" data-en="Delivery × Solution Architecture">Delivery × Solution Architecture</span>
+            <span class="card-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
+          </div>
+          <p class="card-hook" data-en="Same rigor, fifteen times faster">La même rigueur, quinze fois plus vite</p>
+          <div class="card-body">
+          <dl class="par">
+            <dt data-en="Problem">Problème</dt>
+            <dd data-en="On a site with very high vehicle throughput, running on 4G only, body inspection took up to 2 hours, too slow for a real-time gate decision.">Sur un site à très fort débit de véhicules, fonctionnant uniquement en 4G, le contrôle carrosserie prenait jusqu'à 2h, trop lent pour une décision de mise à quai en temps réel.</dd>
+            <dt data-en="Action">Action</dt>
+            <dd data-en-html="I drove a redesign of the detection pipeline: fewer images processed, critical-damage detection prioritised, and the heaviest sub-models removed. In parallel, I proposed a two-tier architecture: an immediate decision for critical damage (&lt;1min), then a full asynchronous pass for vehicle lifecycle tracking.">J'ai piloté la refonte du pipeline de détection : réduction du nombre d'images traitées, priorisation des dommages critiques, suppression des sous-modèles les plus coûteux en calcul. En parallèle, j'ai proposé une architecture en deux temps : une décision immédiate (dommages critiques, &lt;1min) puis une détection asynchrone complète pour le suivi du cycle de vie du véhicule.</dd>
+            <dt data-en="Result">Résultat</dt>
+            <dd class="result" data-en-html="Body-inspection latency cut <span class='kpi'>from 2h to 8min06</span> within three months; <span class='kpi'>100% system uptime</span> despite high throughput and 4G-only connectivity; <span class='kpi'>100%</span> damage recall.">Latence carrosserie ramenée <span class="kpi">de 2h à 8min06</span> en trois mois ; <span class="kpi">disponibilité système à 100%</span> malgré un débit élevé et une connectivité 4G limitée ; rappel des dommages à <span class="kpi">100%</span>.</dd>
+          </dl>
+          <div class="products">
+            <span class="prod" data-en="Real-time pipeline">Pipeline temps réel</span><span class="prod" data-en="Two-tier architecture">Architecture en deux temps</span><span class="prod" data-en="Field reliability">Fiabilité terrain</span>
+          </div>
+          <button class="card-expand" type="button" data-en="See in full →">Voir en grand →</button>
+          </div>
+        </article>
+
+        <!-- Card 9 -->
+        <article class="card reveal" data-idx="I">
+          <div class="card-top">
+            <span class="idx serif">I</span>
+            <h3 class="serif" data-en="They replaced their in-house tool with mine">Ils ont remplacé leur outil interne par le mien</h3>
+            <span class="badge" data-en="Product × Zero-to-One">Product × Zero-to-One</span>
+            <span class="card-toggle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg></span>
+          </div>
+          <p class="card-hook" data-en="From idea to 45+ sites across Europe">De l'idée à 45+ sites en Europe</p>
+          <div class="card-body">
+          <dl class="par">
+            <dt data-en="Problem">Problème</dt>
+            <dd data-en="A major vehicle remarketing account relied on an in-house inspection tool that was costly to maintain and evolve across its network.">Un grand compte du remarketing automobile s'appuyait sur un outil d'inspection développé en interne, coûteux à maintenir et à faire évoluer sur l'ensemble de son réseau.</dd>
+            <dt data-en="Action">Action</dt>
+            <dd data-en="I imagined, designed and drove the development of the inspection app that replaced it, from zero to field deployment, built for non-expert operators.">J'ai imaginé, designé et piloté le développement de l'application d'inspection qui l'a remplacé, de zéro jusqu'au déploiement terrain, pensée pour des opérateurs non-experts.</dd>
+            <dt data-en="Result">Résultat</dt>
+            <dd class="result" data-en-html="The app now runs across <span class='kpi'>45+ sites</span> in Europe, growing every year; the client stopped developing its in-house tool to standardise on ours.">L'application tourne aujourd'hui sur <span class="kpi">45+ sites</span> en Europe, en croissance chaque année ; le client a arrêté de faire évoluer son outil interne pour standardiser sur le nôtre.</dd>
+          </dl>
+          <div class="products">
+            <span class="prod" data-en="Zero-to-one">Zero-to-one</span><span class="prod" data-en="Field adoption">Adoption terrain</span><span class="prod" data-en="Scaled rollout">Déploiement à l'échelle</span>
+          </div>
+          <button class="card-expand" type="button" data-en="See in full →">Voir en grand →</button>
           </div>
         </article>
         </div>
@@ -765,8 +883,8 @@
       </div>
       <div class="metrics reveal">
         <div class="metric"><div class="fig"><span class="num" data-target="82">0</span><span class="u">%</span></div><div class="lbl" data-en="AI detection vs 58% human (+24 pts)">Détection IA vs 58% humain (+24 pts)</div></div>
-        <div class="metric"><div class="fig"><span class="num" data-target="30">0</span><span class="u">+</span></div><div class="lbl" data-en="Deployments">Déploiements</div></div>
-        <div class="metric"><div class="fig"><span class="num" data-target="13">0</span><span class="u">+</span></div><div class="lbl" data-en="Countries">Pays</div></div>
+        <div class="metric"><div class="fig"><span class="num" data-target="77">0</span><span class="u">+</span></div><div class="lbl" data-en="Deployments">Déploiements</div></div>
+        <div class="metric"><div class="fig"><span class="num" data-target="22">0</span><span class="u">+</span></div><div class="lbl" data-en="Countries">Pays</div></div>
         <div class="metric"><div class="fig">~<span class="num" data-target="7">0</span><span class="u">×</span></div><div class="lbl" data-en="Faster inspection turnaround">Délai d'inspection accéléré</div></div>
       </div>
       <p class="lede reveal muted" style="margin-bottom:1.2rem" data-en="Reference accounts I've built product, quality or integration work around:">Comptes de référence autour desquels j'ai construit du produit, de la qualité ou de l'intégration :</p>
@@ -786,7 +904,7 @@
           </div>
           <p class="edu-note reveal" data-en="Dual degree · engineering and international business.">Double diplôme · ingénieur et commerce international.</p>
           <div class="edu-item reveal tilt">
-            <div class="edu-deg" data-en="Engineering degree">Diplôme d'ingénieur</div>
+            <div class="edu-deg" data-en="Engineering degree">Diplôme d'ingénieur généraliste</div>
             <div class="edu-meta" data-en="ECAM Rennes · 2020">ECAM Rennes · 2020</div>
           </div>
           <div class="edu-item reveal tilt">
@@ -826,8 +944,20 @@
             <span class="skill" data-en="API &amp; integrations">API &amp; intégrations</span>
             <span class="skill" data-en="Pre-sales / RFP">Avant-vente / RFP</span>
             <span class="skill" data-en="Hardware × software">Hardware × software</span>
-            <a class="skill" href="https://clickup.com" target="_blank" rel="noopener">ClickUp</a>
-            <a class="skill" href="https://www.hubspot.com" target="_blank" rel="noopener">HubSpot</a>
+          </div>
+          <div class="tools reveal">
+            <a class="tool" href="https://clickup.com" target="_blank" rel="noopener" aria-label="ClickUp">
+              <svg viewBox="0 0 24 24"><path d="M8 16l4-5 4 5"></path><path d="M8 11l4 5 4-5"></path></svg>ClickUp</a>
+            <a class="tool" href="https://www.hubspot.com" target="_blank" rel="noopener" aria-label="HubSpot">
+              <svg viewBox="0 0 24 24"><circle cx="6" cy="7" r="2.4"></circle><circle cx="18" cy="7" r="2.4"></circle><circle cx="12" cy="17" r="2.4"></circle><path d="M8 8.5L10.5 15M16 8.5L13.5 15"></path></svg>HubSpot</a>
+            <a class="tool" href="https://www.notion.com" target="_blank" rel="noopener" aria-label="Notion">
+              <svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1.5"></rect><path d="M8 8h8M8 12h8M8 16h5"></path></svg>Notion</a>
+            <a class="tool" href="https://www.atlassian.com/software/jira" target="_blank" rel="noopener" aria-label="Jira">
+              <svg viewBox="0 0 24 24"><rect x="4" y="4" width="4.5" height="16" rx="1"></rect><rect x="9.75" y="4" width="4.5" height="11" rx="1"></rect><rect x="15.5" y="4" width="4.5" height="7" rx="1"></rect></svg>Jira</a>
+            <a class="tool" href="https://www.figma.com" target="_blank" rel="noopener" aria-label="Figma">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"></circle><circle cx="9" cy="17" r="3"></circle><circle cx="16" cy="12" r="3"></circle><path d="M9 10v4"></path></svg>Figma</a>
+            <a class="tool" href="https://gemini.google.com" target="_blank" rel="noopener" aria-label="Gemini">
+              <svg viewBox="0 0 24 24"><path d="M12 3c0 5-4 9-9 9 5 0 9 4 9 9 0-5 4-9 9-9-5 0-9-4-9-9z"></path></svg>Gemini</a>
           </div>
         </div>
       </div>
@@ -858,6 +988,13 @@
   </footer>
 
   <div class="modal" id="modal" onclick="closeModal()"><img id="modal-img" src="" alt=""></div>
+
+  <div class="modal card-modal" id="card-modal">
+    <div class="card-modal-inner" id="card-modal-inner">
+      <button class="card-modal-close" id="card-modal-close" type="button" aria-label="Fermer">×</button>
+      <div class="card-modal-body" id="card-modal-body"></div>
+    </div>
+  </div>
 
 <script>
   (function () {
@@ -920,7 +1057,34 @@
       m.classList.add('open');
     };
     window.closeModal = function () { document.getElementById('modal').classList.remove('open'); };
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+    // ---- card "voir en grand" modal ----
+    var cardModal = document.getElementById('card-modal');
+    var cardModalBody = document.getElementById('card-modal-body');
+    function openCardModal(card) {
+      var top = card.querySelector('.card-top');
+      var hook = card.querySelector('.card-hook');
+      var body = card.querySelector('.card-body');
+      cardModalBody.innerHTML = '';
+      cardModalBody.setAttribute('data-idx', card.getAttribute('data-idx') || '');
+      if (top) cardModalBody.appendChild(top.cloneNode(true));
+      if (hook) { var h = hook.cloneNode(true); h.style.display = 'block'; h.style.marginBottom = '1.4rem'; cardModalBody.appendChild(h); }
+      if (body) cardModalBody.appendChild(body.cloneNode(true));
+      cardModal.classList.add('open');
+      cardModalBody.scrollTop = 0;
+    }
+    window.closeCardModal = function () { cardModal.classList.remove('open'); };
+    document.querySelectorAll('.card-expand').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        openCardModal(btn.closest('.card'));
+        tick();
+      });
+    });
+    document.getElementById('card-modal-close').addEventListener('click', closeCardModal);
+    cardModal.addEventListener('click', function (e) { if (e.target === cardModal) closeCardModal(); });
+
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeModal(); closeCardModal(); } });
 
     // ---- scroll reveal ----
     if ('IntersectionObserver' in window) {
@@ -947,7 +1111,7 @@
         o.start(now); o.stop(now + 0.15);
       } catch (e) {}
     }
-    document.querySelectorAll('a.fw, a.skill, a.acct, a.cert, .chip, .btn, .side-nav a').forEach(function (el) {
+    document.querySelectorAll('a.fw, a.skill, a.acct, a.cert, a.tool, .chip, .btn, .side-nav a').forEach(function (el) {
       el.addEventListener('click', function () {
         tick();
         el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
